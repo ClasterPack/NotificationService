@@ -1,0 +1,33 @@
+services:
+  notification_service:
+    build: .
+    env_file:
+      - .env
+    depends_on:
+      - notifications_db
+      - rabbitmq
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+
+  notifications_db:
+    image: mongo:6
+    container_name: notifications_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: always
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"   # AMQP
+      - "15672:15672" # Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+volumes:
+  mongo_data:
