@@ -1,14 +1,15 @@
+import uuid
 from typing import Optional
 from pydantic import BaseModel
 
 class NotificationIn(BaseModel):
-    id: str
+    id: uuid
     event: str
-    template_id: str
+    campaign_id: str
     notification_type: str  # email, sms, push
     subject: str
     text: str
-    user_id: Optional[str] = None
+    user_id: Optional[uuid] = None
 
 class Notification(NotificationIn):
     pass
