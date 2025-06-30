@@ -30,6 +30,13 @@ class Settings(BaseSettings):
     )
     log_default_handler: list = Field(default=["console"], alias="LOG_DEFAULT_HANDLER")
     logstash: str = Field(default="localhost", alias="LOGSTASH")
+    """RabbitMq"""
+    rabbitmq_url: str = Field(
+        default="amqp://guest:guest@rabbitmq/", alias="RABBITMQ_URL"
+    )
+    queue_channel: str = Field(default="notifications", alias="QUEUE_CHANNEL")
+    """Kafka"""
+    kafka_url: str = Field(default="kafka:9092", alias="KAFKA_URL")
 
 
 settings = Settings()

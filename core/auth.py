@@ -8,7 +8,6 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl=settings.token_url)
 
 
 async def get_current_user(token: str = Depends(oauth2_scheme)) -> dict:
-    print("Original get_current_user called!")
     """
     Проверяет токен через внешний сервис авторизации.
     Делает HTTP запрос к auth сервису, получает данные пользователя.

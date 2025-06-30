@@ -1,4 +1,5 @@
 from core.config import settings
+
 from .base_producer import AbstractQueueProducer
 from .kafka_producer import KafkaProducer
 from .rabbit_producer import RabbitProducer
