@@ -17,9 +17,7 @@ class KafkaProducer(AbstractQueueProducer):
         async with self._lock:
             if self._initialized:
                 return
-            self._producer = AIOKafkaProducer(
-                bootstrap_servers=settings.kafka_url
-            )
+            self._producer = AIOKafkaProducer(bootstrap_servers=settings.kafka_url)
             await self._producer.start()
             self._initialized = True
 
