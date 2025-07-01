@@ -9,6 +9,6 @@ app = FastAPI(
     docs_url="/api/openapi",
     openapi_url="/api/openapi.json",
 )
-app.include_router(notifications.router)
+app.include_router(notifications.router, prefix="/api/v1")
 
 logger.info("приложение запущено")

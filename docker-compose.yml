@@ -19,6 +19,18 @@ services:
       - mongo_data:/data/db
     restart: always
 
+  tests:
+    build: .
+    container_name: notifications_api_tests
+    environment:
+      - MONGO_URL=${MONGO_URL}
+      - DEBUG=${DEBUG}
+      - PROJECT_NAME=${PROJECT_NAME}
+    volumes:
+      - .:/app
+    command: [ "pytest", "-v", "--disable-warnings" ]
+    restart: "no"
+
 
 volumes:
   mongo_data:

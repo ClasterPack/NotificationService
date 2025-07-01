@@ -4,6 +4,7 @@ import json
 from aiokafka import AIOKafkaProducer
 
 from core.config import settings
+
 from .queue_producer import AbstractQueueProducer
 
 

@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     debug: bool = Field(default=False, alias="DEBUG")
     project_name: str = Field(default="NotificationService", alias="PROJECT_NAME")
     queue_producer: str = "rabbitmq"  # or "kafka"
+    default_page_limit: int = Field(default=100, alias="DEFAULT_PAGE_LIMIT")
     """Mongo DB"""
     mongo_url: str = Field(default="mongodb://localhost:27017", alias="MONGO_URL")
     """Authentication Settings"""
